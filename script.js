@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- CONFIGURACIÓN ---
     // ¡¡¡CAMBIA ESTE PIN POR EL QUE QUIERAS!!!
-    const PING_CORRECTO = '2023'; 
+    const PING_CORRECTO = '2024'; 
     const PAGINA_SECRETA = 'carta.html'; // El archivo al que redirigirá
     // -------------------
 
