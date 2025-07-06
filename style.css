@@ -1,0 +1,192 @@
+/* === FUENTES Y ESTILOS GENERALES === */
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+}
+
+.bg-gradient {
+    background: linear-gradient(135deg, #1d2b64 0%, #f8cdda 100%);
+    min-height: 100vh;
+    overflow-x: hidden; /* Previene scroll horizontal */
+}
+
+
+/* === ESTILOS PARA index.html (Tablero de PIN) - SIN CAMBIOS === */
+.ping-board {
+    max-width: 380px;
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(12px);
+    border: none;
+    border-radius: 24px;
+    transition: transform 0.3s;
+    position: relative;
+    z-index: 10;
+}
+.ping-display { height: 50px; display: flex; justify-content: center; align-items: center; font-size: 2.2rem; letter-spacing: 20px; padding-left: 20px; border-radius: 12px; background-color: #f1f3f5; max-width: 280px; }
+.keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.btn-key { height: 70px; width: 70px; border-radius: 50%; font-size: 1.6rem; font-weight: 500; color: #343a40; border: none; background-color: #e9ecef; transition: all 0.2s ease-in-out; }
+.btn-key:hover { background-color: #ced4da; transform: translateY(-3px); }
+.btn-key:active { transform: translateY(0); background-color: #adb5bd; }
+#delete-btn i { pointer-events: none; }
+.shake { animation: shake 0.4s; }
+@keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-8px); } 75% { transform: translateX(8px); } }
+
+
+/* === NUEVOS ESTILOS DECORATIVOS para carta.html === */
+
+/* Wrapper para el borde degradado de la carta */
+.carta-wrapper {
+    padding: 3px; /* El grosor del borde */
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    border-radius: 28px; /* Ligeramente más grande que el de la carta */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+.carta-estilo {
+    border: none;
+    border-radius: 25px; /* Ligeramente más pequeño que el wrapper */
+    background-color: #fff;
+    line-height: 1.8;
+}
+
+/* Título principal de la carta */
+.carta-estilo .card-title {
+    font-family: 'Dancing Script', cursive;
+    font-weight: 700;
+    font-size: 3.5rem;
+    color: #a75e73; /* Un tono vino/rosa oscuro */
+}
+
+/* Primer párrafo destacado */
+.carta-estilo .lead {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #555;
+    text-align: center;
+    padding: 0 1rem;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+/* Letra Capitular (la primera letra de la carta) */
+.carta-estilo p:nth-of-type(2)::first-letter {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4.5rem;
+    float: left;
+    line-height: 0.8;
+    margin-right: 8px;
+    margin-top: 5px;
+    color: #cc2366;
+}
+
+/* Párrafo de la firma */
+.signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: #8c5269;
+}
+
+/* Corazones que palpitan */
+.pulsing-hearts {
+    display: inline-block;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+/* Divisor horizontal personalizado */
+.custom-hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(204, 35, 102, 0.75), rgba(0, 0, 0, 0));
+    position: relative;
+    margin: 2rem 0;
+}
+
+.custom-hr::after {
+    content: '♥';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    padding: 0 10px;
+    color: #cc2366;
+    font-size: 1.2rem;
+}
+
+/* Animación de entrada para la carta */
+.fade-in-on-load {
+    animation: fadeIn 1.2s ease-out 0.3s forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Fondo animado sutil con partículas */
+.bg-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+@function random_range($min, $max) {
+  @return random() * ($max - $min) + $min;
+}
+
+#stars, #stars2, #stars3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px; /* Ajustado para mejor rendimiento */
+    height: 1px;
+    background: transparent;
+    box-shadow: 
+        /* Genera 50 estrellas aleatorias */
+        73vw 8vh #FFF, 9vw 19vh #FFF, 58vw 3vh #FFF, 12vw 62vh #FFF, 91vw 34vh #FFF, 
+        8vw 5vh #FFF, 75vw 17vh #FFF, 34vw 53vh #FFF, 5vw 41vh #FFF, 54vw 29vh #FFF,
+        82vw 36vh #FFF, 48vw 90vh #FFF, 3vw 85vh #FFF, 57vw 57vh #FFF, 24vw 82vh #FFF,
+        96vw 1vh #FFF, 62vw 92vh #FFF, 17vw 3vh #FFF, 79vw 40vh #FFF, 41vw 9vh #FFF,
+        50vw 50vh #FFF, 29vw 73vh #FFF, 99vw 69vh #FFF, 67vw 24vh #FFF, 88vw 78vh #FFF;
+    animation: animStar 50s linear infinite;
+}
+
+#stars2 {
+    box-shadow: 
+        10vw 80vh #FFF, 60vw 21vh #FFF, 43vw 33vh #FFF, 87vw 72vh #FFF, 21vw 22vh #FFF,
+        15vw 55vh #FFF, 70vw 97vh #FFF, 39vw 43vh #FFF, 8vw 11vh #FFF, 94vw 89vh #FFF;
+    animation: animStar 100s linear infinite;
+}
+
+#stars3 {
+    box-shadow: 
+        5vw 15vh #FFF, 25vw 35vh #FFF, 55vw 55vh #FFF, 75vw 75vh #FFF, 95vw 95vh #FFF;
+    animation: animStar 150s linear infinite;
+}
+
+@keyframes animStar {
+    from { transform: translateY(0px); }
+    to { transform: translateY(-2000px); }
+}
+
+
+
